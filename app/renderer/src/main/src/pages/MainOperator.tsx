@@ -341,6 +341,7 @@ const Main: React.FC<MainProp> = React.memo((props) => {
     useEffect(() => {
         ipcRenderer.invoke("GetYakitCompletionRaw").then((data: {RawJson: Uint8Array}) => {
             try {
+                console.log(123, data);
                 const completionJson = Buffer.from(data.RawJson).toString("utf8")
                 const total = JSON.parse(completionJson) as CompletionTotal
                 setYaklangCompletions(total)
